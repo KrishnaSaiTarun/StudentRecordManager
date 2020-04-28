@@ -3,7 +3,9 @@
 
 void menu(){
 
-    std::cout << "\nPlease choose one of the following operations" << std::endl;
+    std::cout << "************WELCOME TO THE STUDENT RECORD MANAGER****************" << std::endl;
+
+    std::cout << "\nPlease choose one of the following operations\n" << std::endl;
     //initscr();
 
     //printw("Please choose one of the following operationsn");
@@ -15,6 +17,8 @@ void menu(){
     std::cout << "3 --> Select an existing course" << std::endl;
 
     std::cout << "4 --> Exit the program" << std::endl;
+ 
+    std::cout << "Enter the option:: ";
 
     //endwin();
 }

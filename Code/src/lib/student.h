@@ -1,0 +1,4 @@
+#ifndef TEMPLATE_STUDENT_H
+#define TEMPLATE_STUDENT_H
+
+#endif

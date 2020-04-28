@@ -1,0 +1,4 @@
+#ifndef TEMPLATE_ASSIGNMENT_H
+#define TEMPLATE_ASSIGNMENT_H
+
+#endif

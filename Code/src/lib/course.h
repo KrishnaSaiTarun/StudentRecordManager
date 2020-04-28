@@ -11,6 +11,8 @@ class course{
 
     course();
 
+    void courseMenu();
+
     std::string name;
     //std::vector<assignment*> assignments;
 

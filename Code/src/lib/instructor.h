@@ -28,6 +28,8 @@ class instructor{
         int furtherActions(const int op);
         void addInstructor();
         void eraseData();
+
+        int courseOperationsHelper(const int op, const int i);
     
 };
 

@@ -5,7 +5,8 @@
 int main()
 {
     //initscr();
-
+    std::system("clear");
+    
     studentRecordManager s;
     s.start();
 

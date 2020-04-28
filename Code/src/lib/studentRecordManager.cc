@@ -4,6 +4,8 @@ studentRecordManager::studentRecordManager(){}
 
 void studentRecordManager::start(){
 
+  prof = new instructor();
+
   int option; 
   
   // Initialize the ncurses library!
@@ -19,7 +21,8 @@ void studentRecordManager::start(){
     // READ THE USER INPUT
       std::cin >> option;
 
-      std::cout << std::endl;
+      //std::cout << std::endl;
+
 
       int status = optionManager(option);
 
@@ -39,23 +42,28 @@ int studentRecordManager::optionManager(const int option){
 
   if(option != 1 && option != 2 && option != 3){
 
+    std::system("clear");
     std::cout << "The entered option does not exist! Please choose a valid option from the menu.." << std::endl << std::endl;
     return 0;
   }
 
   if(option == 1){
     
-    prof.operations();
+    std::system("clear");
+    prof->operations();
   }
 
   else if(option == 2){
 
+    std::system("clear");
     course* newCourse = new course();
-    prof.addCourse(newCourse);
+    prof->addCourse(newCourse);
   }
 
   else if(option == 3){
-    prof.courseOperations();
+
+    std::system("clear");
+    prof->courseOperations();
   }
 
   return 0;
