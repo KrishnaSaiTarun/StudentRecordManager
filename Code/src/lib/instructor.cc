@@ -169,14 +169,22 @@ void instructor::courseOperations(){
         int status = courseOperationsHelper(op, i);
 
         i = op;
-        if(status) break;
+        if(status) {
+
+            std::system("error");
+            int ret_val = courses[i-1]->courseMenu();
+
+            if(ret_val == 4)
+            continue;
+            //callCourseMenu();
+
+            if(ret_val == 5)
+            break;
+        }
 
     }
 
-    // MAYBE WHILE AGAIN HERE
-
-    courses[i-1]->courseMenu();
-    
+    return; 
 
 }
 
