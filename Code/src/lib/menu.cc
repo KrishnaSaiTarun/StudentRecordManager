@@ -16,7 +16,7 @@ void menu(){
 
     std::cout << "3 --> Select an existing course" << std::endl;
 
-    std::cout << "4 --> Exit the program" << std::endl;
+    std::cout << "4 --> Exit the program\n" << std::endl;
  
     std::cout << "Enter the option:: ";
 

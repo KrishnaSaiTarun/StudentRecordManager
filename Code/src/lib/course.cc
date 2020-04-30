@@ -48,7 +48,12 @@ int course::courseMenu(){
             continue;
         }
 
-        if(status == 3){}
+        if(status == 3){
+
+            courseStats();
+            //std::system("clear");
+            continue;
+        }
 
         return 1;
     }
@@ -57,6 +62,74 @@ int course::courseMenu(){
 
     return 1;
 
+}
+
+void course::courseStats(){
+
+    if(assignments.size() == 0){
+
+        std::cout << "NOTE::The course does not have any assignments for statistics..\n\n";
+        return;
+    }
+
+    float overallTotal = 0;
+    std::vector<float> allMeans;
+    float mean = 0;
+    float median = 0;
+
+    for(auto a : assignments){
+
+        int i = a.first;
+        auto as = a.second;
+
+        auto x = assignmentStats(i);
+
+        overallTotal += (as->max_credit * as->percent / 100);
+        allMeans.push_back(x.first * as->percent / 100);
+        mean+= (x.first * as->percent / 100);
+        median+= (x.second * as->percent / 100);
+    }
+
+    //float mean = std::accumulate(allMeans.begin(), allMeans.end(), 0)/ allMeans.size();
+
+    //float median = 0;
+    // std::sort(allMeans.begin(), allMeans.end());
+
+    // int n = allMeans.size();
+
+    // if(n % 2 == 0){
+
+    //     median = (allMeans[(n/2)-1] + allMeans[n/2]) / 2;
+    // }
+
+    // else median = allMeans[(n-1)/2];
+
+    std::cout << "Overall Course creits completd: " << overallTotal <<  std::endl;
+    std::cout << "Overall Mean: " << mean << std::endl;
+    std::cout << "Overall Median: " << median << std::endl << std::endl;
+
+    std::cout << "Press any key to go back!\n";
+    char c;
+    std::cin >> c;
+    std::system("clear");
+
+    return;
+}
+
+std::pair<float, float> course::assignmentStats(int i){
+
+    auto as = assignments[i];
+
+    std::cout << "Assignment ID: " << i << "\t\t\tAssignment Name: " << as->name << std::endl;
+
+    float mean = as->calcMean();
+    std::cout << "Maximum Credit: " << as->max_credit << std::endl;
+    std::cout << "Overall weightage for the final score: " << as->percent << std::endl;
+    std::cout << "Mean Score of the class: " << mean << std::endl;
+    float median = as->calcMedian();
+    std::cout << "Median of the class is: " << median << std::endl << std::endl;
+
+    return {mean, median};
 }
 
 
@@ -83,7 +156,7 @@ void course::studentList(){
 
         printStudentOptions();
 
-        std::cout << "Enter a Student ID for further information or Choose other options:: ";
+        std::cout << "\nEnter a Student ID for further information or Choose other options:: ";
         long int op = -1;
         std::cin >> op;
 
@@ -121,7 +194,7 @@ void course::printStudentOptions(){
 
     }
 
-    std::cout << "\nOther operations:\n";
+    std::cout << "\nOther operations:\n\n";
     std::cout << "1 --> Add a new student\n";
     std::cout << "2 --> Remove a student\n";
     std::cout << "3 --> Go back to the course home!\n";
@@ -192,6 +265,17 @@ int course::studentListOperations(long int op){
 
     if(op == 3) return 1;
 
+    if(studentData.find(op) != studentData.end()){
+
+        auto stu = studentData[op];
+        stu->insideStuOps();
+    }
+
+    else{
+
+        std::cout << "ERROR:: INVALID ENTRY!\n";
+    }
+
     return -1;
 
 }
@@ -219,7 +303,7 @@ void course::assignmentList(){
 
         printAssignments();
 
-        std::cout << "Enter an assignment ID for further information or Choose other options:: ";
+        std::cout << "\nEnter an assignment ID for further information or Choose other options:: ";
         int op = -1;
         std::cin >> op;
 
@@ -255,7 +339,7 @@ void course::printAssignments(){
         }
     }
 
-    std::cout << "\nOther operations:\n";
+    std::cout << "\nOther operations:\n\n";
     std::cout << "1 --> Add a new Assignment\n";
     std::cout << "2 --> Remove an assignment\n";
     std::cout << "3 --> Go back to the course home!\n";
@@ -328,6 +412,15 @@ int course::assignmentListOperations(int op){
     }
 
     if(op == 3) return 1;
+
+    if(assignments.find(op) != assignments.end()){
+
+        auto x = assignmentStats(op);
+        std::cout << "\nPress any key to go back::";
+        char c;
+        std::cin >> c;
+        std::system("clear");
+    }
 
     return -1;
 

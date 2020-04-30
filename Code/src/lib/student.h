@@ -22,6 +22,9 @@ class student{
         std::string name;
         std::map<int, assignment*> assignmentsVec;
         std::map<int, std::pair<int, int>> assignmentScore;
+
+        void insideStuOps();
+        int editGrades(int op);
 };
 
 

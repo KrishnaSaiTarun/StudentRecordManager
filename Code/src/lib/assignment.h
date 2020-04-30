@@ -3,7 +3,8 @@
 
 #include <map>
 #include <string>
-#include "student.h"
+#include "src/lib/student.h"
+#include <algorithm>
 
 class student;
 
@@ -14,6 +15,7 @@ class assignment{
         assignment(int i, std::string s, std::map<long int, student*> &students);
 
         int max_credit;
+        float percent;
         std::map<long int, int> studentCredits;
         std::string name;
         int id;
@@ -21,6 +23,11 @@ class assignment{
 
         void updateStudentCredits(std::map<long int, student*> &students);
         void removeStudents(long int i);
+
+        void changeScore(long int i, int score);
+
+        float calcMean();
+        float calcMedian();
 };
 
 #endif

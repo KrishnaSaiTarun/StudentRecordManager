@@ -4,6 +4,9 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <tuple>
+#include <algorithm>
+#include <numeric>
 #include "student.h"
 #include "assignment.h"
 
@@ -13,11 +16,13 @@ class course{
 
     course();
 
-    int courseMenu();
+    
 
     std::string name;
     std::map<int, assignment*> assignments;
+    std::map <long int, student*> studentData;
 
+    int courseMenu();
     void studentList();
     int studentListOperations(long int op);
     void printStudentOptions();
@@ -27,8 +32,11 @@ class course{
     int assignmentListOperations(int op);
     void removeAssignment(int i);
 
-    // MApping between student ID and the Stdent object
-    std::map <long int, student*> studentData;
+    void courseStats();
+    std::pair<float, float> assignmentStats(int i);
+
+    
+    
 
     private:
 

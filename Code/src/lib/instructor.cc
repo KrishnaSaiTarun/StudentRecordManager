@@ -153,7 +153,7 @@ void instructor::courseOperations(){
 
         }
 
-        std::cout << i << ": " "Return to the main menu." << std::endl;
+        std::cout << i << ": " "Return to the main menu.\n" << std::endl;
 
         std::cout << "Enter the option:: ";
 
@@ -171,7 +171,7 @@ void instructor::courseOperations(){
         i = op;
         if(status) {
 
-            std::system("error");
+            std::system("clear");
             int ret_val = courses[i-1]->courseMenu();
 
             if(ret_val == 4)

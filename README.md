@@ -9,13 +9,10 @@ Work done:
 	Program Flow is set up
 	Classes are defined
 	Initial interface is defined
-	
-TODO: 
-
 	Implement student database part and the assignment entry part.
-	Need to implement the calculations and the math behind the grades. 
+	Implement the calculations and the math behind the grades.
 	
-Further Development: 
+TODO/Further Development: 
 
 	Use ncurses to get a better terminal interface!
 	
@@ -35,4 +32,4 @@ Enter the option::
 And the navigation happens from this menu. 
 
 
-Compilation and running: BAZEL ---> bazel run main:main
+Compilation and running: BAZEL ---> bazel run main:main (from the main folder in src)
