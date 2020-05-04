@@ -11,7 +11,6 @@ class instructor{
     public:
 
     std::string name;
-    //std::vector<std::string> courses;
     std::string id;
 
     instructor();
@@ -21,6 +20,8 @@ class instructor{
     void courseOperations();
 
     std::vector<course*> courses;
+
+    ~instructor();
 
     private:
 

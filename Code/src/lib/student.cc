@@ -1,19 +1,20 @@
 #include "student.h"
 
+//Construcotr 
 student::student(long int i, std::string s, std::map<int, assignment*> &assign){
 
-    //std::cout << "DEBUG:: I CAME HERE!\n\n";
     id = i;
     name = s;
-    assignmentsVec = assign;
-    //std::cout << "DEBUG:: I CAME HERE!\n\n";
-    newStudentGrades();
+    assignmentsVec = assign;  // copy all the assignments 
+ 
+    newStudentGrades();  // Add the grades of the student for the existing assignment 
 
 }
 
+// Add grades to the new student 
 void student::newStudentGrades(){
 
-    if(assignmentsVec.size() != 0){
+    if(assignmentsVec.size() != 0){  // if assignments are not emptyt 
 
         std::cout << "Please enter the gardes for this student for the following assignments:\n";
 
@@ -34,17 +35,18 @@ void student::newStudentGrades(){
         assignmentScore[i] = grade;
         as->studentCredits[id] = score;
         
-
         } 
-
 
     }
 
     return;
 }
 
+
+// Student options for further actions 
 void student::insideStuOps(){
 
+// Calculate everything of the student, mean median and display his operations 
     while(1){
 
         std::cout << "These are the details of the student: " << name << "  (Student ID: " << id << ")\n\n";
@@ -81,6 +83,7 @@ void student::insideStuOps(){
 
         std::cin >> op;
 
+        // based on the option we can change score of an assignment or we can go back 
         if(op == 1) {
 
             std::system("clear");
@@ -96,17 +99,19 @@ void student::insideStuOps(){
 
 }
 
+
+// To edit student grades
 int student::editGrades(int op){
 
     std::system("clear");
 
-    if(assignmentsVec.find(op) == assignmentsVec.end()){
+    if(assignmentsVec.find(op) == assignmentsVec.end()){ // if the entered assignment does not exist 
 
         std::cout << "ERROR:: Invalid Entry!\n\n";
         return -1;
     }
 
-    else{
+    else{  // cahnge the assignment score by taking the new entry 
 
         auto as = assignmentsVec[op];
 
@@ -127,10 +132,11 @@ int student::editGrades(int op){
     return -1;
 }
 
+// To remove an assignment from the student data structure. 
+
 void student::removeAssignment(int a){
 
     assignmentsVec.erase(a);
-    //auto i = a->id;
     assignmentScore.erase(a);
 }
 

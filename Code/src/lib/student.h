@@ -15,16 +15,19 @@ class student{
 
         student(long int i, std::string s, std::map<int, assignment*> &assign);
 
-        void newStudentGrades();
         void removeAssignment(int a);
-
-        long int id;
-        std::string name;
-        std::map<int, assignment*> assignmentsVec;
-        std::map<int, std::pair<int, int>> assignmentScore;
-
         void insideStuOps();
+
+        long int id;    // Stident ID
+        std::string name;   // Student Name
+        std::map<int, assignment*> assignmentsVec;    // Map from Assignment ID to ---> Assignment Object
+        std::map<int, std::pair<int, int>> assignmentScore;   // Map:: Assignment Id--> {score, max Credit}
+
+    private:
+
+        void newStudentGrades();
         int editGrades(int op);
+
 };
 
 

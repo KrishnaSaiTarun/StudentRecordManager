@@ -1,11 +1,23 @@
 #include "instructor.h"
 
+// Constructor
 instructor::instructor(){
 
     name = "";
     id = "";
 }
 
+// Destructor to avoid memeory leaks.
+instructor::~instructor(){
+
+    //Delete all the courses created 
+    for(auto c : courses){
+        delete c;
+        c = NULL;
+    }
+}
+
+// OPTION 1 from main menu --> View/Add instructor
 void instructor::operations(){
 
     int op = -1;
@@ -16,13 +28,14 @@ void instructor::operations(){
 
         std::cin >> op;
 
-        int status = furtherActions(op);
+        int status = furtherActions(op);    // Take further actions based on the input 
         if(status) break;
     }
     
     return;
 }
 
+// PRINTING THE MENU of Instructor
 void instructor::printMenu(){
 
     if(name == ""){
@@ -37,11 +50,11 @@ void instructor::printMenu(){
         std::cout << "Instructor's ID: " << id << std::endl << std::endl;
         std::cout << "The courses taken by the instructor are:: ";
 
-        if(courses.size() == 0){
+        if(courses.size() == 0){  // No courses to print 
 
             std::cout << "{The course List is Empty}" << std::endl << std::endl;
         }
-        else{
+        else{  // print the courses 
 
             std::cout << "{\t";
 
@@ -61,32 +74,33 @@ void instructor::printMenu(){
     std::cout << "Enter the option:: ";
 }
 
+// BAsed on the option chosen, we take further actions!
 int instructor::furtherActions(const int op){
 
-    if(op == 2) {
+    std::system("clear");
+
+    if(op == 2) { //EXIT
 
         std::system("clear");
         return 1;
     }
 
-    if(op != 1){
+    if(op != 1){  // INVALID ENTRY
 
         std::system("clear");
         std::cout << "Invalid option. Please choose a valid option.." << std::endl <<std::endl;
-        //printMenu();
         return 0;
     }
 
-    addInstructor();
+    addInstructor(); // OPTION == 1
     return 0;
-
-    
 
 }
 
+// Add an new instructor
 void instructor::addInstructor(){
 
-    eraseData();
+    eraseData();  //ERASE EXISTING PROF
     std::system("clear");
 
     while(1){
@@ -94,7 +108,7 @@ void instructor::addInstructor(){
         std::cout << "Enter the instructor Name: ";
         std::cin >> name;
 
-        if(name == ""){
+        if(name == ""){   // if the entered name is an empty string 
 
             std::system("clear");
 
@@ -109,9 +123,7 @@ void instructor::addInstructor(){
         std::cout << "Enter the instructor ID: ";
         std::cin >> id;
 
-        if(id == ""){
-
-            //std::system("clear");
+        if(id == ""){  // if the entered Id is empty 
 
             std::cout << "Please enter a valid ID!\n" << std::endl;
         }
@@ -120,23 +132,24 @@ void instructor::addInstructor(){
     }
 
     std::system("clear");
-
-    //std::cout << std::endl << std::endl;
     return;
 }
 
-void instructor::eraseData(){
+//Erase the exisiting instructor 
+void instructor::eraseData(){   // Just make them empty strings 
 
     name = "";
     id = "";
     return;
 }
 
+// Add a new course
 void instructor::addCourse(course* newCourse){
 
     courses.push_back(newCourse);
 }
 
+// If the view courses option is chosen 
 void instructor::courseOperations(){
 
     int i;
@@ -166,8 +179,8 @@ void instructor::courseOperations(){
             return;
         }
 
-        int status = courseOperationsHelper(op, i);
-
+        int status = courseOperationsHelper(op, i);  // based on the option chosen we can take further actions 
+ 
         i = op;
         if(status) {
 
@@ -176,7 +189,6 @@ void instructor::courseOperations(){
 
             if(ret_val == 4)
             continue;
-            //callCourseMenu();
 
             if(ret_val == 5)
             break;
@@ -188,13 +200,14 @@ void instructor::courseOperations(){
 
 }
 
+// If a course option is chosen then a helper function
+
 int instructor::courseOperationsHelper(const int op, const int i){
 
-    if(op > i || op <= 0){
+    if(op > i || op <= 0){  // Invalid option 
 
         std::system("clear");
         std::cout << "\nPlease enter a valid option.\n";
-        //instructor::courseOperations();
         return 0;
     }        
     

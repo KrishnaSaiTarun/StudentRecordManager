@@ -12,6 +12,7 @@ class assignment{
 
     public: 
 
+        assignment();
         assignment(int i, std::string s, std::map<long int, student*> &students);
 
         int max_credit;
@@ -21,13 +22,16 @@ class assignment{
         int id;
 
 
-        void updateStudentCredits(std::map<long int, student*> &students);
+        
         void removeStudents(long int i);
-
         void changeScore(long int i, int score);
-
         float calcMean();
         float calcMedian();
+    
+    private: 
+
+        void updateStudentCredits(std::map<long int, student*> &students);
+
 };
 
 #endif

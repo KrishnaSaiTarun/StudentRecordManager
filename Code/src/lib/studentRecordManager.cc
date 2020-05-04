@@ -1,19 +1,23 @@
 #include "studentRecordManager.h"
 
-studentRecordManager::studentRecordManager(){}
+studentRecordManager::studentRecordManager(){
+
+  prof = NULL;
+}
+
+studentRecordManager::~studentRecordManager(){
+
+  delete prof;
+  prof = NULL;
+}
 
 void studentRecordManager::start(){
 
   prof = new instructor();
 
   int option; 
-  
-  // Initialize the ncurses library!
-  //initscr();
 
   while(1){
-
-    //break;
 
     // PRINT THE MAIN MENU
       menu();
@@ -21,32 +25,27 @@ void studentRecordManager::start(){
     // READ THE USER INPUT
       std::cin >> option;
 
-      //std::cout << std::endl;
-
-
       int status = optionManager(option);
 
       if(status) break;
 
     }
 
-    //getch();
-    //endwin();
-
     return;
 }
 
 int studentRecordManager::optionManager(const int option){
 
-  if(option == 4) return 1;
+  if(option == 4) return 1;    // EXIT THE PROGRAM 
 
-  if(option != 1 && option != 2 && option != 3){
+  if(option != 1 && option != 2 && option != 3){   //WRONG ENTRY
 
     std::system("clear");
     std::cout << "The entered option does not exist! Please choose a valid option from the menu.." << std::endl << std::endl;
     return 0;
   }
 
+ // OPERATIONS BASED ON THE SELECTED OPTION
   if(option == 1){
     
     std::system("clear");

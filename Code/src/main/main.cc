@@ -1,16 +1,15 @@
 #include <iostream>
 #include "src/lib/studentRecordManager.h"
-//#include "src/lib/menu.h"
+
 
 int main()
 {
-    //initscr();
+
     std::system("clear");
     
+    // THIS IS THE CLASS THAT RUNS OUR MAIN APPLICATION!!
     studentRecordManager s;
     s.start();
-
-    //endwin();
 
     return EXIT_SUCCESS;
 }

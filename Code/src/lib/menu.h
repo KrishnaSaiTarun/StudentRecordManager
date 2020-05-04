@@ -1,7 +1,9 @@
 #ifndef TEMPLATE_MENU_H
 #define TEMPLATE_MENU_H
 
-//#include <ncurses.h>
+// THIS IS TO PRINT THE WELCOME MENU
+// USING A DIFFERENT FILE TO KEEP THE CODE CLEAN!
+
 #include "studentRecordManager.h"
 #include <iostream>
 void menu();

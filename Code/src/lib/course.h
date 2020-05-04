@@ -16,13 +16,18 @@ class course{
 
     course();
 
-    
-
     std::string name;
     std::map<int, assignment*> assignments;
     std::map <long int, student*> studentData;
 
-    int courseMenu();
+    ~course();
+
+    int courseMenu();  
+    int courseMenuOptions(const int op); // MADE public so that G-Test can be used, else it is private
+
+    private:
+
+    
     void studentList();
     int studentListOperations(long int op);
     void printStudentOptions();
@@ -31,19 +36,9 @@ class course{
     void printAssignments();
     int assignmentListOperations(int op);
     void removeAssignment(int i);
-
     void courseStats();
     std::pair<float, float> assignmentStats(int i);
-
     
-    
-
-    private:
-
-    int courseMenuOptions(const int op);
-    
-
-
 };
 
 #endif
